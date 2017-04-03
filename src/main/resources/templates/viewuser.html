@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+    <body layout:fragment="content">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p th:inline="text">
+                    Username: [[${user.username}]]
+                    <br/>
+                    Email: [[${user.email}]]
+                    <br/>
+                    Rating: [[${user.rating}]]
+                    <br/>
+                    Account Type: [[${user.userAccountType}]]
+                    <br/>
+                    Create Date: [[${user.createDate}]]
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
