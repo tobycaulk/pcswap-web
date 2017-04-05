@@ -1,2 +1,9 @@
-.navbar-default {
+.primary-highlight {
+    color: #0275d8;
+}
+
+.swap-card-image {
+    display: block;
+    max-width: 185px;
+    height: auto;
 }

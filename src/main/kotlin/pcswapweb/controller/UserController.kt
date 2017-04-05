@@ -62,7 +62,7 @@ class UserController {
         httpSession.setAttribute("signedIn", "true")
         updateSession(httpSession, model)
 
-        return "redirect:index.html"
+        return "redirect:/"
     }
 
     @GetMapping("/profile")
@@ -84,7 +84,7 @@ class UserController {
         httpSession.setAttribute("signedIn", "false")
         updateSession(httpSession, model)
 
-        return "redirect:index.html"
+        return "redirect:/"
     }
 
     fun getUserFromSessionId(sessionId: String): User? {

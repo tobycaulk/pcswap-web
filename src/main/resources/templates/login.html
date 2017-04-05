@@ -1,9 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
     <body layout:fragment="content">
-        <form action="/login" method="post">
-            Email: <input type="text" name="email"/><br/>
-            Password: <input type="password" name="password"/>
-            <input type="submit" value="Create"/>
-        </form>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <form action="/login" method="post">
+                    <div class="input-group">
+                        <div class="row">
+                            <input type="text" class="form-control input" name="email" placeholder="Email"/>
+                        </div>
+                        <div class="row">
+                            <input type="password" class="form-control input" name="password" placeholder="Password"/>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

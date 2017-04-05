@@ -26,7 +26,7 @@ class HomeController {
 
     val log = Logger.getLogger(HomeController::class.java)
 
-    @GetMapping("/index")
+    @GetMapping("/")
     fun index(model: Model, httpSession: HttpSession): String {
         model.addAttribute("totalSwapCount", getTotalSwapCount())
         model.addAttribute("recentSwapListings", getRecentSwapListings())
@@ -54,7 +54,7 @@ class HomeController {
                         if(user != null) {
                             var tradeForItem = getSwapItem(swap.tradeForItems[0])
                             if (tradeForItem != null) {
-                                swapListings.add(SwapListing(sellItem, tradeForItem, user))
+                                swapListings.add(SwapListing(sellItem, tradeForItem, user, swap.createDate))
                             }
                         }
                     }

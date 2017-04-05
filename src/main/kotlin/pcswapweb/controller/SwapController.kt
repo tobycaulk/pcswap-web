@@ -50,7 +50,7 @@ class SwapController {
 
         updateSession(httpSession, model)
 
-        return "redirect:index.html"
+        return "redirect:/"
     }
 
     @GetMapping("/viewSwap")
