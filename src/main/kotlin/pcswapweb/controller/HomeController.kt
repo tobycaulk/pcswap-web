@@ -54,7 +54,7 @@ class HomeController {
                         if(user != null) {
                             var tradeForItem = getSwapItem(swap.tradeForItems[0])
                             if (tradeForItem != null) {
-                                swapListings.add(SwapListing(sellItem, tradeForItem, user, swap.createDate))
+                                swapListings.add(SwapListing(sellItem, tradeForItem, user, swap.createDate, swap.swapId!!))
                             }
                         }
                     }

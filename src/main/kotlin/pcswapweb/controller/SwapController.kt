@@ -8,11 +8,14 @@ import pcswapobjects.request.RequestBase
 import pcswapobjects.request.swap.CreateSwapRequest
 import pcswapobjects.request.swap.GetSwapItemRequest
 import pcswapobjects.request.swap.GetSwapRequest
+import pcswapobjects.request.user.GetUserRequest
 import pcswapobjects.response.ResponseBase
 import pcswapobjects.response.swap.CreateSwapResponse
 import pcswapobjects.response.swap.GetSwapItemResponse
 import pcswapobjects.response.swap.GetSwapResponse
+import pcswapobjects.response.user.GetUserResponse
 import pcswapobjects.swap.SwapItem
+import pcswapobjects.user.User
 import pcswapweb.service.post
 import pcswapweb.service.typeRef
 import javax.servlet.http.HttpSession
@@ -64,9 +67,14 @@ class SwapController {
             if(payload != null) {
                 var swap = payload.swap
                 if(swap != null) {
+                    model.addAttribute("swap", swap)
                     var sellItem = getSwapItem(swap.sellItem)
                     if(sellItem != null) {
                         model.addAttribute("sellItem", sellItem)
+                        var seller = getUser(sellItem.userId!!)
+                        if(seller != null) {
+                            model.addAttribute("seller", seller)
+                        }
                     }
 
                     var tradeForItem = getSwapItem(swap.tradeForItems.get(0))
@@ -80,6 +88,23 @@ class SwapController {
         updateSession(httpSession, model)
 
         return "viewswap"
+    }
+
+    fun getUser(userId: String): User? {
+        var user: User? = null
+
+        var request = GetUserRequest(userId)
+        var requestBase = RequestBase<GetUserRequest>(payload=request, sessionId="")
+
+        var response = post("http://localhost:2222/getUser", requestBase, typeRef<ResponseBase<GetUserResponse>>())
+        if(response != null) {
+            var payload = response.payload
+            if(payload != null) {
+                user = payload.user
+            }
+        }
+
+        return user
     }
 
     fun getSwapItem(swapItemId: String): SwapItem? {

@@ -1,7 +1,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
     <body layout:fragment="content">
-        <h2 th:inline="text">[Have] [[${sellItem.item}]] [Want] [[${tradeForItem.item}]]</h2>
-        <img th:src="${sellItem.imageUrl}" width="500px" height="500px"/>
-        <p th:text="${sellItem.description}"/>
+
+        <br/>
+        <br/>
+
+        <div class="row justify-content-center">
+            <div class="card col-8">
+                <img class="card-img-top swap-card-image" th:src="${sellItem.imageUrl}" alt="Card image cap"/>
+                <div class="card-block">
+                    <h4 class="card-title" th:inline="text">[<span class="primary-highlight">Have</span>] [[${sellItem.item}]] [<span class="primary-highlight">Want</span>] [[${tradeForItem.item}]]</h4>
+                    <hr/>
+                    <p class="card-text" th:text="${sellItem.description}"></p>
+                    <a href="#" class="card-link">Make Offer</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted" th:inline="text">Submitted on [[${swap.createDate}]] by [[${seller.username}]]([[${seller.rating}]])</small>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
